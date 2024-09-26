@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Metropolis, Arial, Helvetica, sans-serif;
+            background-color: var(--background-color);
+        }
+        body::-webkit-scrollbar{
+            background-color: #424242;
+        }
+        body::-webkit-scrollbar-thumb{
+            background-color: #7B7B7B;
+        }
+        :root{
+            --background-color: #28294F;
+            --button-color: #80B9AD;     
+        }
+        nav{
+            width: 100%;
+            height: 80px;
+            background-color: var(--background-color);
+            position: fixed;
+              }
+        nav::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0.5px;
+            background: black;
+            filter: blur(1px);
+            top: 80px;
+            left: 0;
+            position: fixed;
+        }
+        #ImgAndText{
+            width: 40%;
+            height: auto;
+            padding: 18px 7px;
+        }
+        nav img{
+            height: 42px;
+            margin-right: 12px;
+            max-width: 42px;
+            width: 100%;
+            margin-left: 20px;  
+        }
+        text{
+        font-size: 26px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: white;
+        position: absolute;
+        padding: 10px 0px;
+        }
+        #TowTag{
+            width: 40%;
+            height: 40px;
+            box-sizing: border-box;
+            margin-top: -60px;
+            float: right;
+            padding-right: 20px;
+        }
+        #TowTag a{
+            color: white;
+            text-decoration: none; 
+            font-weight: 500;
+            margin: 8px;
+            float: right;
+        }
+        #TowTag a:hover{
+            opacity: 0.7;
+        }
+        nav .Editing{
+            position: relative;
+        }
+        nav .Editing::after{
+            content: '';
+            position: absolute;
+            top: 17px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to left, #ff9100, #f10366 50%, #6173ff);
+        }
+        #TextBox{
+            width: 100%;
+            height: 150px;
+            padding-top: 200px;
+            padding-bottom: 60px;
+            /* background-color: #80B9AD; */
+            color: #f9f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #TextBox pre{
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 1.14;
+            font-family: Metropolis, Arial, Helvetica, sans-serif;
+        }
+        #TagP{
+            width: 100%;
+            height: auto;
+            /* background-color: #80B9AD; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        #TagP p{
+            font-size: 25px;
+            max-width: 560px;
+            text-align: center;
+            line-height: 1.7;
+        }
+        #buttonDefical{
+            width: 100%;
+            height: auto;
+            /* background-color: #08a81a; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+            padding-bottom: 100px;
+        }
+        #buttonDefical button{
+            background-color: #80b9ad;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        #buttonDefical button:hover{
+            cursor: not-allowed;
+        }
+        #Sedow{
+            width: 95%;
+            height: 420px;
+            background-color:#28294F;
+            border-radius: 5px;
+            margin: 0 auto;
+            position: relative;
+            z-index: -1;
+        }
+        #Sedow::before{
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 100%;
+            height: 420px;
+            background:#28294F;
+            border: 1px solid rgb(23, 22, 22);
+            filter: blur(0.5px);
+            z-index: -1;
+        }
+        #HeadLine{
+            width: 95%;
+            height: auto;
+            padding-top: 20px;
+            padding-bottom: 50px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+        #AllChild{
+            width: 100%;
+            height: auto;
+            /* background-color: #6173ff; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        #ChildPreject{
+            width: 32%;
+            height: auto;
+            /* background-color: #80B9AD; */
+            display: inline-block;
+        }
+        #ChildPreject img{
+            margin-bottom: 10px;
+        }
+        #ChildPreject h1{
+            margin-bottom: 10px;
+            font-size: 25px;
+            color: white;
+        }
+        #ChildPreject p{
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+            font-size: 16px;
+            color: white;
+        }
+        #btnConstruction{
+            width: 100%;
+            height: 30px;
+            /* background-color: #f10366; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 250px;
+            z-index: 10; 
+        }
+        #btnConstruction a{
+       /* padding: 15px 25px; */
+       color: rgb(255, 255, 255);
+       font-weight: bold;
+       cursor: pointer;
+        }
+        #btnConstruction a:hover{
+           cursor: pointer;
+           /* background-color: #ff0000; */
+        }
+        footer{
+            width: 100%;
+            height: 150px;
+            /* background-color: #ff0000; */
+            margin-top: 5px;
+            position: relative;
+        }
+        #TextFormula{
+            width: 50%;
+            height: auto;
+            /* background-color: #28294F; */
+            color: white;
+            font-size: 25px;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, Arial, sans-serif;
+            text-transform: uppercase;
+            position: absolute;
+            margin-top: 120px;
+            margin-left: 20px;
+            font-weight: bold;
+            padding-bottom: 20px;
+            user-select: none;
+        }
+        #ClickA{
+            width: 95%;
+            height: 20px;
+            /* background-color: #28294F; */
+            position: absolute;
+            margin-top: 124px;
+            margin-right: 30px;
+        }
+        #ClickA a{
+            color: white;
+            text-decoration: none;
+            margin: 8px;
+            float: right;
+        }
+        #ClickA a:hover{
+            opacity: 0.5;
+        }
+        @media screen and (max-width: 600px) {
+            #TowTag{
+           display: none;
+        }   
+        #TextBox{
+            width: 100%;
+            height: auto;
+            padding-top: 5px;
+            padding-bottom: 60px;
+            /* background-color: #11b491; */
+            color: #f9f9fa;
+            /* display:block; */
+            align-items: none;
+            justify-content: start;
+        }
+        #TextBox pre{
+            font-size: 30px;
+            font-weight: 500;
+            margin-left: 5px;
+            margin-top: 100px;
+            line-height: 1.14;
+            font-family: Metropolis, Arial, Helvetica, sans-serif;
+        }
+        
+        #TagP{
+            width: 100%;
+            height: auto;
+            margin-top: -50px;
+            /* background-color: #80B9AD; */
+            display: flex;
+            justify-content: start;
+            color: white;
+            
+        }
+        #TagP p{
+            font-size: 18px;
+            margin-left: 30px;
+            /* max-width: 560px; */
+            text-align: start;
+            line-height: 1.7;
+        }
+        #buttonDefical{
+            width: 100%;
+            height: auto;
+            /* background-color: #08a81a; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #buttonDefical button{
+            background-color: #80b9ad;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        #buttonDefical button:hover{
+            cursor: not-allowed;
+            user-select: unset;
+        }
+        #Sedow{
+            width: 95%;
+            height: 420px;
+            background-color:#28294F;
+            border-radius: 5px;
+            margin: 0 auto;
+            position: relative;
+            z-index: -1;
+        }
+        #Sedow::before{
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 100%;
+            height: 420px;
+            background:#28294F;
+            border: 1px solid rgb(23, 22, 22);
+            filter: blur(0.5px);
+            z-index: -1;
+            display: none;
+        }
+        #HeadLine{
+            width: 100%;
+            height: auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            /* background-color: #08a81a; */
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+          
+        }
+        #AllChild{
+            width: 100%;
+            height: auto;
+            /* background-color: #6173ff; */
+            display:grid;
+            position: absolute;
+        }
+        #ChildPreject{
+            width: 100%;
+            height: auto;
+            /* background-color: #80B9AD; */
+            display:block;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+        #ChildPreject img{
+            margin-bottom: 10px;
+        }
+        #ChildPreject h1{
+            margin-bottom: 10px;
+            font-size: 25px;
+            color: white;
+        }
+        #ChildPreject p{
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+            font-size: 16px;
+            color: white;
+        }
+        #btnConstruction{
+            width: 100%;
+            height: 30px;
+            /* background-color: #f10366; */
+            margin-top: 575px;
+        }
+        #btnConstruction a{
+       color: rgb(255, 255, 255);
+       font-weight: bold;
+       cursor: pointer;
+
+        }
+        #btnConstruction a:hover{
+           cursor: pointer;
+           /* background-color: #ff0000; */
+        }
+        footer{
+            width: 100%;
+            height: 150px;
+            /* background-color: #ff0000; */
+            margin-top: 200px;
+            position: relative;
+        }
+        #TextFormula{
+            width: 50%;
+            height: auto;
+            /* background-color: #ff0000; */
+            color: white;
+            font-size: 25px;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, Arial, sans-serif;
+            text-transform: uppercase;
+            position: absolute;
+            margin-top: 120px;
+            margin-left: 10px;
+            font-weight: bold;
+            padding-bottom: 20px;
+            user-select: none;
+        }
+        #ClickA{
+            width: 100%;
+            height: auto;
+            /* background-color: #2bff00; */
+            position: absolute;
+            margin-top: 120px;
+            margin-right: 30px;
+        }
+        #ClickA a{
+            color: white;
+            text-decoration: none;
+            margin: 8px;
+            float: right;
+            display: table-column-group;
+            font-size: 12px;  
+        }
+        #ClickA a:hover{
+            opacity: 0.5;
+        }
+    }
+
+    </style>
+</head>
+<body>
+<nav>
+    <div id="ImgAndText">
+        <a href=""><img src="/FiveStor/ImgFile/logo.png" width="10px" alt="img">
+            <text>MyProject</text></a>
+</div>
+<div id="TowTag">
+    <a href="#">Get In Touch</a>
+    <a class="Editing" href="#">Home</a>
+    </div>
+</nav>
+<div id="TextBox">
+    <pre>Install Firefox Addons in 
+        Google Chrome</pre>
+</div>
+<div id="TagP">
+    <p>Emulate Firefox addons in Chrome, Edge,<br> Opera and other Chromium based browsers</p>
+</div>
+<div id="buttonDefical">
+    <button>Installed</button>
+</div>
+
+<div id="Sedow">
+<div id="HeadLine">Foxified features</div>
+
+<div id="AllChild">
+<div id="ChildPreject">
+    <img src="/FiveStor/ImgFile/feature-image-1.png" alt="">
+    <h1>Emulation Sandbox</h1>
+    <p>Firefox addons are emulated and served in a sandboxed unique origin.</p>
+</div>
+
+<div id="ChildPreject">
+    <img src="/FiveStor/ImgFile/feature-image-2.png" alt="img">
+    <h1>WebExtension API</h1>
+    <p>Foxified polyfills most of the browser and Chrome APIs including XHR and webextension API</p>
+</div>
+
+<div id="ChildPreject">
+    <img src="/FiveStor/ImgFile/feature-image-3.png" alt="">
+    <h1>Extra Layer of Protection</h1>
+    <p>All of the permissions are optional and requested upon plugin install</p>
+</div>
+</div>
+<div id="btnConstruction">
+    <a href="#">Read more</a>
+</div>
+</div>
+<footer>
+<div id="TextFormula">foxified</div>
+<div id="ClickA">
+<a href="">Contact</a>
+<a href="">Prvacy Policy</a>
+<a href="">Terms Of Service</a>
+</div>
+</footer>
+</body>
+</html>
